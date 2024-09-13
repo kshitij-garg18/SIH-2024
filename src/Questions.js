@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useQuestions } from './QuestionProvider';
-import './Questions.css'; // Ensure this CSS file includes styles for the score bar
-import ScoreBar from './ScoreBar'; // Import the ScoreBar component
+import './Questions.css';
+import ScoreBar from './ScoreBar';
+import useGameSounds from './useGameSounds'; // Import the custom sound hook
 
 const Questions = () => {
   const questions = useQuestions();
@@ -11,16 +12,41 @@ const Questions = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
 
+  const { 
+    playCorrectSound, 
+    playWrongSound, 
+    playWinningSound, 
+    playThinkingSound, 
+    stopThinkingSound 
+  } = useGameSounds(); // Use the custom sound hook
+
   const currentQuestion = questions[currentQuestionIndex];
-  
+  const maxScore = questions.length; // Total number of questions = max score
+
+  // Play "thinking" sound when a new question is displayed
+  useEffect(() => {
+    playThinkingSound();
+    return () => stopThinkingSound();
+  }, [currentQuestionIndex]);
+
   const handleAnswer = (answer) => {
+    stopThinkingSound(); // Stop the thinking sound when an answer is selected
     if (answer === currentQuestion.correctAnswer) {
       setIsCorrect(true);
-      setScore((prevScore) => prevScore + 1);
-      setIncrement(1); // Increment score for the correct answer
+      setScore((prevScore) => {
+        const newScore = prevScore + 1;
+        if (newScore === maxScore) {
+          playWinningSound(); // Play winning sound if player wins
+        } else {
+          playCorrectSound(); // Play correct answer sound
+        }
+        return newScore;
+      });
+      setIncrement(1);
     } else {
       setIsCorrect(false);
-      setIncrement(0); // No increment for the wrong answer
+      playWrongSound(); // Play wrong answer sound
+      setIncrement(0);
     }
 
     setShowExplanation(true);
@@ -32,7 +58,6 @@ const Questions = () => {
   };
 
   useEffect(() => {
-    // Reset the increment after a short delay
     if (increment > 0) {
       const timer = setTimeout(() => setIncrement(0), 1500);
       return () => clearTimeout(timer);
@@ -45,7 +70,7 @@ const Questions = () => {
 
   return (
     <div className="questions-container">
-      <ScoreBar totalScore={score} incrementScore={increment} /> {/* Ensure only one ScoreBar */}
+      <ScoreBar totalScore={score} incrementScore={increment} />
       {showExplanation ? (
         <div className="explanation-container">
           <div className={`explanation-text ${isCorrect ? 'correct' : 'incorrect'}`}>
@@ -75,4 +100,3 @@ const Questions = () => {
 };
 
 export default Questions;
-
