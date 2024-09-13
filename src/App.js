@@ -24,9 +24,9 @@ function App() {
   // Stop background music when the quiz starts
   useEffect(() => {
     if (isQuizStarted) {
-      stopBackgroundStart();
+      stopBackgroundStart(); // Ensure the music stops when the quiz starts
     }
-  }, [isQuizStarted]);
+  }, [isQuizStarted, stopBackgroundStart]); // Added stopBackgroundStart as a dependency
 
   const startQuiz = (settings) => {
     setQuizSettings(settings);
@@ -63,4 +63,3 @@ function App() {
 }
 
 export default App;
-
