@@ -1,58 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuestions } from './QuestionProvider';
-import './Questions.css';  // Import any specific styles for this component
+import './Questions.css'; // Ensure this CSS file includes styles for the score bar
+import ScoreBar from './ScoreBar'; // Import the ScoreBar component
 
-function Questions() {
+const Questions = () => {
   const questions = useQuestions();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswer, setUserAnswer] = useState(null);
-  const [isAnswered, setIsAnswered] = useState(false);
+  const [score, setScore] = useState(0);
+  const [increment, setIncrement] = useState(0);
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(null);
 
-  if (questions.length === 0) return <div>No questions available</div>;
-
-  const question = questions[currentQuestionIndex];
-
+  const currentQuestion = questions[currentQuestionIndex];
+  
   const handleAnswer = (answer) => {
-    setUserAnswer(answer);
-    setIsAnswered(true);
+    if (answer === currentQuestion.correctAnswer) {
+      setIsCorrect(true);
+      setScore((prevScore) => prevScore + 1);
+      setIncrement(1); // Increment score for the correct answer
+    } else {
+      setIsCorrect(false);
+      setIncrement(0); // No increment for the wrong answer
+    }
+
+    setShowExplanation(true);
   };
 
-  const handleNext = () => {
-    setIsAnswered(false);
-    setUserAnswer(null);
-    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+  const handleNextQuestion = () => {
+    setShowExplanation(false);
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   };
 
-  const isCorrect = userAnswer === question.correctAnswer;
+  useEffect(() => {
+    // Reset the increment after a short delay
+    if (increment > 0) {
+      const timer = setTimeout(() => setIncrement(0), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [increment]);
+
+  if (!currentQuestion) {
+    return <div>No questions available.</div>;
+  }
 
   return (
     <div className="questions-container">
-      <div className="question">
-        <h2>{question.question}</h2>
-        <div className="options">
-          {question.options.map((option, index) => (
-            <button 
-              key={index} 
-              onClick={() => handleAnswer(option)}
-              disabled={isAnswered}
-              className={`option-button ${isAnswered ? (option === question.correctAnswer ? 'correct-option' : 'wrong-option') : ''}`}
-            >
-              {option}
-            </button>
-          ))}
+      <ScoreBar totalScore={score} incrementScore={increment} /> {/* Ensure only one ScoreBar */}
+      {showExplanation ? (
+        <div className="explanation-container">
+          <div className={`explanation-text ${isCorrect ? 'correct' : 'incorrect'}`}>
+            {isCorrect ? 'Correct!' : 'Wrong!'}
+            <p>{currentQuestion.explanation}</p>
+          </div>
+          <button onClick={handleNextQuestion} className="next-button">Next Question</button>
         </div>
-      </div>
-      {isAnswered && (
-        <div className={`result ${isCorrect ? 'correct' : 'wrong'}`}>
-          <p>{isCorrect ? 'Correct!' : 'Wrong!'}</p>
-          <p><strong>Explanation:</strong></p>
-          <p className="typing-animation">{question.explanation}</p>
-          <button onClick={handleNext}>Next Question</button>
+      ) : (
+        <div className="question-container">
+          <h2>{currentQuestion.question}</h2>
+          <div className="options-container">
+            {currentQuestion.options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() => handleAnswer(option)}
+                className="option-button"
+              >
+                {option}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default Questions;
 

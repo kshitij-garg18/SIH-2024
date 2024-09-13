@@ -1,0 +1,39 @@
+.score-bar-container {
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .score-bar {
+    height: 30px;
+    background-color: #4caf50; /* Use a single color for the bar */
+    position: relative;
+    transition: width 1s ease; /* Smooth animation */
+  }
+  
+  .score-text {
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .score-flash {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2em;
+    color: #ffeb3b;
+    animation: flash 1s ease;
+  }
+  
+  @keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  

@@ -1,84 +1,113 @@
-/* .typing-animation {
-    display: inline-block;
-    white-space: pre-wrap; 
-    border-right: .15em solid orange; 
-    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
-  }
-  
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  @keyframes blink-caret {
-    from, to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: orange;
-    }
-  } */
-
-
 .questions-container {
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.score-bar-container {
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.score-bar {
+  display: flex;
+  width: 80%; /* Increase the width of the score bar */
+  height: 30px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-bar-total,
+.score-bar-streak,
+.score-bar-increment {
+  height: 100%;
+  position: absolute;
+  transition: width 0.5s ease-in-out;
+}
+
+.score-bar-total {
+  background-color: #d0d0d0;
+}
+
+.score-bar-streak {
+  background-color: #4caf50; /* Green for streak */
+}
+
+.score-bar-increment {
+  background-color: #ff9800; /* Orange for increment */
+}
+
+.score-flash {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ff9800;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+  animation: flash 1s ease-in-out;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.question-content {
+  width: 80%; /* Ensure this is aligned with the width of the score bar */
+}
+
+.question-container {
+  margin: 20px 0;
+}
+
+.option-button {
+  margin: 5px;
+}
+
+.explanation-container {
+  text-align: center;
+}
+
+.explanation-text {
+  font-size: 1.2em;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.explanation-text.correct {
+  border-color: #4caf50; /* Green for correct */
+  color: #4caf50;
+}
+
+.explanation-text.incorrect {
+  border-color: #f44336; /* Red for incorrect */
+  color: #f44336;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .question {
-    margin-bottom: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .options {
-    margin-bottom: 20px;
-  }
-  
-  .option-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .option-button:disabled {
-    cursor: not-allowed;
-  }
-  
-  .option-button.correct-option {
-    background-color: #d4edda;
-    color: #155724;
-  }
-  
-  .option-button.wrong-option {
-    background-color: #f8d7da;
-    color: #721c24;
-  }
-  
-  .result {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .result.correct {
-    background-color: #d4edda;
-    color: #155724;
-  }
-  
-  .result.wrong {
-    background-color: #f8d7da;
-    color: #721c24;
-  }
-  
-  .result p {
-    margin: 10px 0;
-  }
-  
-  .result button {
-    margin-top: 10px;
-  }
-  
+}
+
+.next-button {
+  margin-top: 10px;
+}
