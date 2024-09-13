@@ -5,6 +5,7 @@ import './StartScreen.css'; // Ensure you have styling for this screen
 const StartScreen = ({ onStartQuiz }) => {
   const [showFact, setShowFact] = useState(false); // Track if facts are being shown
   const [currentFact, setCurrentFact] = useState('');
+  const [showConstitutionPage, setShowConstitutionPage] = useState(false);
 
   // Function to show a random fact
   const showRandomFact = () => {
@@ -19,29 +20,50 @@ const StartScreen = ({ onStartQuiz }) => {
     setCurrentFact(factData[randomIndex]);
   };
 
+  const handleShowConstitutionPage = () => {
+    setShowConstitutionPage(true);
+  };
+
   return (
     <div className="start-screen">
-      <h1>Welcome to the Quiz Game</h1>
-
-      {!showFact ? (
-        <>
-          <button className="start-button" onClick={onStartQuiz}>
-            Take Quiz
-          </button>
-          <button className="fact-button" onClick={showRandomFact}>
-            Interesting Facts
-          </button>
-        </>
-      ) : (
-        <div className="fact-container">
-          <p>{currentFact}</p>
-          <button className="new-fact-button" onClick={showNewFact}>
-            Show Another Fact
-          </button>
-          <button className="back-button" onClick={() => setShowFact(false)}>
+      {showConstitutionPage ? (
+        <div className="iframe-container">
+          <iframe
+            src="/constitution.html" // Path to your HTML file
+            title="Constitution Information"
+            className="iframe-fullscreen"
+          />
+          <button className="back-button" onClick={() => setShowConstitutionPage(false)}>
             Back to Menu
           </button>
         </div>
+      ) : (
+        <>
+          <h1>Welcome to the Quiz Game</h1>
+          {!showFact ? (
+            <>
+              <button className="start-button" onClick={onStartQuiz}>
+                Take Quiz
+              </button>
+              <button className="fact-button" onClick={showRandomFact}>
+                Interesting Facts
+              </button>
+              <button className="constitution-button" onClick={handleShowConstitutionPage}>
+                Learn about Constitution
+              </button>
+            </>
+          ) : (
+            <div className="fact-container">
+              <p>{currentFact}</p>
+              <button className="new-fact-button" onClick={showNewFact}>
+                Show Another Fact
+              </button>
+              <button className="back-button" onClick={() => setShowFact(false)}>
+                Back to Menu
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

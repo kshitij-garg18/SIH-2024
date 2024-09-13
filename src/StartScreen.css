@@ -1,3 +1,4 @@
+/* General start screen styling */
 .start-screen {
   display: flex;
   flex-direction: column;
@@ -7,9 +8,9 @@
   background-color: #f0f0f0;
 }
 
-.start-button, .fact-button, .new-fact-button, .back-button {
+.start-button, .fact-button, .learn-button, .new-fact-button, .back-button {
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
   margin: 10px;
   background-color: #4caf50;
   color: white;
@@ -19,14 +20,43 @@
   transition: background-color 0.3s;
 }
 
-.start-button:hover, .fact-button:hover, .new-fact-button:hover, .back-button:hover {
+.start-button:hover, .fact-button:hover, .learn-button:hover, .new-fact-button:hover, .back-button:hover {
   background-color: #45a049;
 }
 
+/* Fact container styling */
 .fact-container {
   text-align: center;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Iframe styling for full viewport display */
+.iframe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  background-color: #f0f0f0; /* Background color for iframe container */
+}
+
+.iframe-fullscreen {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Styling adjustments for smaller screens */
+@media (max-width: 768px) {
+  .start-button, .fact-button, .learn-button, .new-fact-button, .back-button {
+    font-size: 14px;
+  }
+
+  .fact-container, .iframe-container {
+    padding: 10px;
+  }
 }
