@@ -1,3 +1,3 @@
 # Deploy
 
-https://github.com/kshitij-garg18/SIH-2024
+https://master--sih2024-constitution.netlify.app/
