@@ -21,31 +21,31 @@ const Questions = () => {
   } = useGameSounds(); // Use the custom sound hook
 
   const currentQuestion = questions[currentQuestionIndex];
-  const maxScore = questions.length; // Total number of questions = max score
+  const maxScore = questions.length;
 
   // Play "thinking" sound when a new question is displayed
   useEffect(() => {
     playThinkingSound();
     return () => stopThinkingSound();
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, playThinkingSound, stopThinkingSound]); // Added both dependencies
 
   const handleAnswer = (answer) => {
-    stopThinkingSound(); // Stop the thinking sound when an answer is selected
+    stopThinkingSound();
     if (answer === currentQuestion.correctAnswer) {
       setIsCorrect(true);
       setScore((prevScore) => {
         const newScore = prevScore + 1;
         if (newScore === maxScore) {
-          playWinningSound(); // Play winning sound if player wins
+          playWinningSound();
         } else {
-          playCorrectSound(); // Play correct answer sound
+          playCorrectSound();
         }
         return newScore;
       });
       setIncrement(1);
     } else {
       setIsCorrect(false);
-      playWrongSound(); // Play wrong answer sound
+      playWrongSound();
       setIncrement(0);
     }
 

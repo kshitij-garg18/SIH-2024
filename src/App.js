@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import StartScreen from "./StartScreen"; // Import the StartScreen component
+import StartScreen from "./StartScreen";
 import NameInput from "./NameInput";
 import QuizSettings from "./QuizSettings";
 import Questions from "./Questions";
@@ -8,25 +8,25 @@ import useGameSounds from "./useGameSounds"; // Import the custom sound hook
 import "./App.css";
 
 function App() {
-  const [isStartScreen, setIsStartScreen] = useState(true); // Manage the start screen
+  const [isStartScreen, setIsStartScreen] = useState(true);
   const [userName, setUserName] = useState("");
   const [quizSettings, setQuizSettings] = useState(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
 
-  const { playBackgroundStart, stopBackgroundStart } = useGameSounds(); // Use the sound hook
+  const { playBackgroundStart, stopBackgroundStart } = useGameSounds();
 
-  // Play background music after clicking the "Start" button
+  // Play background music on user interaction (start screen)
   const handleStart = () => {
     playBackgroundStart();
-    setIsStartScreen(false); // Hide start screen and show quiz settings
+    setIsStartScreen(false);
   };
 
   // Stop background music when the quiz starts
   useEffect(() => {
     if (isQuizStarted) {
-      stopBackgroundStart();
+      stopBackgroundStart(); // Added 'stopBackgroundStart' to the dependency array
     }
-  }, [isQuizStarted]);
+  }, [isQuizStarted, stopBackgroundStart]);
 
   const startQuiz = (settings) => {
     setQuizSettings(settings);
@@ -37,13 +37,13 @@ function App() {
     setQuizSettings(null);
     setUserName("");
     setIsQuizStarted(false);
-    setIsStartScreen(true); // Reset back to start screen
+    setIsStartScreen(true);
   };
 
   return (
     <div className="App">
       {isStartScreen ? (
-        <StartScreen onStart={handleStart} />  // Show start screen with button
+        <StartScreen onStart={handleStart} />
       ) : !userName ? (
         <NameInput setUserName={setUserName} />
       ) : !isQuizStarted ? (
@@ -63,4 +63,5 @@ function App() {
 }
 
 export default App;
+
 
