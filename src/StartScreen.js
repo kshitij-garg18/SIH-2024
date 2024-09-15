@@ -39,7 +39,7 @@ const StartScreen = ({ onStartQuiz }) => {
         </div>
       ) : (
         <>
-          <h1>Welcome to the Quiz Game</h1>
+          <h1>Welcome to Nagrik Aur Samvidhan</h1>
           {!showFact ? (
             <>
               <button className="start-button" onClick={onStartQuiz}>
