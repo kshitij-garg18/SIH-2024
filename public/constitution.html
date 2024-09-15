@@ -1,102 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flexbox Layout</title>
-  <link rel="stylesheet" href="constitution.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Layout</title>
+    <link rel="stylesheet" href="constitution.css" />
+  </head>
+  <body>
+    <!-- Header with Navigation -->
+    <header>
+      <nav>
+        <h1>Welcome to Easy Constitution</h1>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li class="dropdown">
+            <a href="#all-articles" class="dropbtn">All Articles</a>
+            <div class="dropdown-content">
+              <a href="#section1">Article 1</a>
+              <a href="#section2">Article 2</a>
+              <a href="#section3">Article 3</a>
+              <a href="#section4">Article 4</a>
+              <a href="#section5">Article 5</a>
+              <a href="#section6">Article 6</a>
+            </div>
+          </li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Header with Navigation -->
-  <header>
-    <nav>
-       <h1> Welcome to Easy Constitution</h1>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li class="dropdown">
-          <a href="#all-articles" class="dropbtn">All Articles</a>
-          <div class="dropdown-content">
-            <a href="#section1">Article 1</a>
-            <a href="#section2">Article 2</a>
-            <a href="#section3">Article 3</a>
-            <a href="#section4">Article 4</a>
-            <a href="#section5">Article 5</a>
-            <a href="#section6">Article 6</a>
-          </div>
-        </li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Flex Containers -->
+    <div class="container" id="home">
+      <!-- Image on left, text on right -->
+      <div class="content left" id="section1">
+        <img src="images/Indian-Constitution-1.png" alt="Image 1" />
+        <div class="text-content">
+          <h2>Indian Constitution</h2>
+          <p>
+            The Indian Constitution is the supreme law of India. It was adopted
+            by the Constituent Assembly on 26th November 1949 and came into
+            effect on 26th January 1950, marking the country's transition to a
+            republic. The Constitution is a comprehensive document that sets out
+            the framework and principles of governance in India. It establishes
+            the structure and powers of the government, delineates the
+            fundamental rights and duties of citizens, and safeguards the
+            democratic values and principles on which the nation is built. It
+            also provides for a system of checks and balances, ensuring a
+            separation of powers among the three branches of government. The
+            Indian Constitution is known for its resilience and adaptability,
+            having been amended several times to reflect changing social,
+            political, and economic realities. It is a testament to the
+            democratic spirit and aspirations of the Indian people.
+          </p>
+          <button>Learn More</button>
+        </div>
+      </div>
 
-  <!-- Flex Containers -->
-  <div class="container" id="home">
-    <!-- Image on left, text on right -->
-    <div class="content left" id="section1">
-      <img src="https://via.placeholder.com/200" alt="Image 1">
-      <div class="text-content">
-        <h2>Heading 1</h2>
-        <p>This is some text about the first topic.</p>
-        <button>Learn More</button>
+      <!-- Image on right, text on left -->
+      <div class="content right" id="section2">
+        <img src="images/Indian-Constitution-2.jpe  g" alt="Image 2" />
+        <div class="text-content">
+          <h2>Preamble</h2>
+          <p>
+            A preamble is an introductory statement in a document that explains 
+            the document’s philosophy and objectives. In a Constitution, it
+            presents the intention of its framers, the history behind its
+            creation, and the core values and principles of the nation. The
+            preamble basically gives idea of the following things/objects:
+            Source of the Constitution Nature of Indian State Statement of its
+            objectives Date of its adoption
+          </p>
+          <button>Learn More</button>
+        </div>
+      </div>
+
+      <!-- Image on left, text on right -->
+      <div class="content left" id="section3">
+        <img src="images/Indian-Constitution-3.jpg" alt="Image 3" />
+        <div class="text-content">
+          <h2>PART I The Union and its Territory</h2>
+          <p>
+            ARTICLES 1 TO 4 <br />Article 1: Name and Territory of the Union
+            <br />Article 2: Admission or establishment of new States
+            <br />Article 3: Formation of new States and alteration of areas,
+            boundaries or names of existing States <br />Article 4: Laws made
+            under articles 2 and 3 to provide for the amendment of the First and
+            the Fourth Schedules and supplemental, incidental and consequential
+            matters
+          </p>
+          <button>Learn More</button>
+        </div>
+      </div>
+
+      <!-- Image on right, text on left -->
+      <div class="content right" id="section4">
+        <img src="images/Indian-Constitution-4.jpg" alt="Image 4" />
+        <div class="text-content">
+          <h2>PART II Citizenship</h2>
+          <p>
+            ARTICLES 5 TO 11<br />
+
+            Article 5: Citizenship at the commencement of the Constitution<br />
+
+            Article 6: Rights of citizenship of certain persons who have
+            migrated to India from Pakistan<br />
+
+            Article 7: Rights of citizenship of certain migrants to Pakistan<br />
+
+            Article 8: Rights of citizenship of certain persons of Indian origin
+            residing outside India<br />
+          </p>
+          <button>Learn More</button>
+        </div>
+      </div>
+
+      <!-- Image on left, text on right -->
+      <div class="content left" id="section5">
+        <img src="images/Indian-Constitution-5.png" alt="Image 5" />
+        <div class="text-content">
+          <h2>PART III Fundamental Rights</h2>
+          <p>
+            ARTICLES 12 TO 35ARTICLES 12 TO 35<br />
+
+            Article 12: Definitions<br />
+
+            Article 13: Laws inconsistent with or in derogation of the
+            fundamental rights<br />
+
+            Right to Equality Article 14: Equality before law<br />
+
+            Article 15: Prohibition of discrimination on grounds of religion,
+            race, caste, sex or place of birth<br />
+
+            Article 16: Equality of opportunity in matters of public
+            employment<br />
+
+            Article 17: Abolition of Untouchability<br />
+
+            Article 18: Abolition of titles<br />
+
+            Right to Freedom Article 19: Protection of certain rights regarding
+            freedom of Speech, etc.<br />
+
+            Article 20: Protection in respect of conviction for offences<br />
+
+            Article 21: Protection of life and personal liberty<br />
+
+            Article 21A: Right to education<br />
+
+            Article 22: Protection against arrest and detention in certain
+            cases<br />
+
+            Right against Exploitation Article 23: Prohibition of traffic in
+            human beings and forced labour<br />
+
+            Article 24: Prohibition of employment of children in factories,
+            etc.<br />
+
+            Right to Freedom of Religion Article 25: Freedom of conscience and
+            free profession, practice and propagation of religion<br />
+
+            Article 26: Freedom to manage religious affairs<br />
+
+            Article 27: Freedom as to payment of taxes for promotion of any
+            particular religion<br />
+
+            Article 28: Freedom as to attendance at religious instruction or
+            religious worship in certain educational institutions<br />
+
+            Cultural and Educational Rights Article 29: Protection of interests
+            of minorities<br />
+
+            Article 30: Right of minorities to establish and administer
+            educational institutions<br />
+
+            Right to Property Article 31: Compulsory acquisition of property
+            (Omitted)<br />
+
+            Saving of Certain Laws Article 31A: Saving of laws providing for
+            acquisition of estates, etc.<br />
+
+            Article 31B: Validation of certain Acts and Regulations<br />
+
+            Article 31C: Saving of laws giving effect to certain directive
+            principles<br />
+
+            Article 31D: Saving of laws in respect of anti-national activities
+            (Omitted)<br />
+
+            Right to Constitutional Remedies Article 32: Remedies for
+            enforcement of rights conferred by this Part<br />
+
+            Article 32A: Constitutional validity of State laws not to be
+            considered in proceedings under article 32 (Omitted)<br />
+
+            Article 33: Power of Parliament to modify the rights conferred by
+            this Part in their application to Forces, etc.<br />
+
+            Article 34: Restriction on rights conferred by this Part while
+            martial law is in force in any area<br />
+
+            Article 35: Legislation to give effect to the provisions of this
+            Part<br />
+          </p>
+          <button>Learn More</button>
+        </div>
+      </div>
+
+      <!-- Image on right, text on left -->
+      <div class="content right" id="section6">
+        <img src="images/Indian-Constitution-6.jpg" alt="Image 6" />
+        <div class="text-content">
+          <h2>PART IV
+            Directive Principles of State Policy</h2>
+          <p>ARTICLES 36 TO 51<br>
+
+            Article 36: Definition<br>
+            
+            Article 37: Application of the principles contained in this Part<br>
+            
+            Article 38: State to secure a social order for the promotion of welfare of the people<br>
+            
+            Article 39: Certain principles of policy to be followed by the State<br>
+            
+            Article 39A: Equal justice and free legal aid<br>
+            
+            Article 40: Organisation of village panchayats<br>
+            
+            Article 41: Right to work, to education and to public assistance in certain cases<br>
+            
+            Article 42: Provision for just and humane conditions of work and maternity relief<br>
+            
+            Article 43: Living wage, etc., for workers<br>
+            
+            Article 43A: Participation of workers in management of industries<br>
+            
+            Article 43B: Promotion of co-operative societies<br>
+            
+            Article 44: Uniform civil code for the citizens<br>
+            
+            Article 45: Provision for early childhood care and education to children below the age of six years<br>
+            
+            Article 46: Promotion of educational and economic interests of Scheduled Castes, Scheduled Tribes and other weaker sections<br>
+            
+            Article 47: Duty of the State to raise the level of nutrition and the standard of living and to improve public health<br>
+            
+            Article 48: Organisation of agriculture and animal husbandry<br>
+            
+            Article 48A: Protection and improvement of environment and safeguarding of forests and wild life<br>
+            
+            Article 49: Protection of monuments and places and objects of national importance<br>
+            
+            Article 50: Separation of judiciary from executive<br>
+            
+            Article 51: Promotion of international peace and security<br></p>
+          <button>Learn More</button>
+        </div>
       </div>
     </div>
 
-    <!-- Image on right, text on left -->
-    <div class="content right" id="section2">
-      <img src="https://via.placeholder.com/200" alt="Image 2">
-      <div class="text-content">
-        <h2>Heading 2</h2>
-        <p>This is some text about the second topic.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <!-- Image on left, text on right -->
-    <div class="content left" id="section3">
-      <img src="https://via.placeholder.com/200" alt="Image 3">
-      <div class="text-content">
-        <h2>Heading 3</h2>
-        <p>This is some text about the third topic.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <!-- Image on right, text on left -->
-    <div class="content right" id="section4">
-      <img src="https://via.placeholder.com/200" alt="Image 4">
-      <div class="text-content">
-        <h2>Heading 4</h2>
-        <p>This is some text about the fourth topic.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <!-- Image on left, text on right -->
-    <div class="content left" id="section5">
-      <img src="https://via.placeholder.com/200" alt="Image 5">
-      <div class="text-content">
-        <h2>Heading 5</h2>
-        <p>This is some text about the fifth topic.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-
-    <!-- Image on right, text on left -->
-    <div class="content right" id="section6">
-      <img src="https://via.placeholder.com/200" alt="Image 6">
-      <div class="text-content">
-        <h2>Heading 6</h2>
-        <p>This is some text about the sixth topic.</p>
-        <button>Learn More</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer id="contact">
-    <p>&copy; 2024 Your Website</p>
-  </footer>
-
-</body>
+    <!-- Footer -->
+    <footer id="contact">
+      <p>&copy; 2024 Your Website</p>
+    </footer>
+  </body>
 </html>
